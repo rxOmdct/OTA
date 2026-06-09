@@ -24,9 +24,8 @@ installation() {
     else
         echo -e "${BRED} ${gras}--- Installation annulée ! ---${NC}"
     fi
-mount -o remount,usrquota / &>/dev/null  # Active les quotas sur la partition
-quotacheck -cum / &>/dev/null            # Vérifie et crée les fichiers de quota
-quotaon / &>/dev/null                   # Active les quotas
+mount -o remount,usrquota / &>/dev/null
+quotacheck -cum / &>/dev/null
+quotaon / &>/dev/null
 sleep 1
 }
-

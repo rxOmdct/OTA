@@ -1,10 +1,10 @@
 #!/bin/bash
-BVERT='\033[1;32m'   # Vert gras
-BRED='\033[1;31m'    # Rouge gras
-BYELLOW='\033[1;33m' # Jaune gras
-BCYAN='\033[1;36m'   # Cyan gras
-GRAS='\033[1m'       # Gras
-NC='\033[0m'         # No Color
+BVERT='\033[1;32m'
+BRED='\033[1;31m'
+BYELLOW='\033[1;33m'
+BCYAN='\033[1;36m'
+GRAS='\033[1m'
+NC='\033[0m'
 
 manage_ftp() {
         echo -e "${BVERT}============================${NC}"
@@ -21,7 +21,6 @@ manage_ftp() {
 
         case "$choix" in
                 1)
-                        # --- Activer FTP ---
                         echo ""
                         echo -e "${BVERT}============================${NC}"
                         echo -e "${BVERT}======= Activer FTP ========${NC}"
@@ -31,41 +30,39 @@ manage_ftp() {
                         echo ""
                         echo -e "${GRAS}Quel utilisateur veux-tu activer ?${NC}"
                         read nom
-                        if id "$nom" &>/dev/null; then  # Vérifie si l'utilisateur existe
-                                pure-pw useradd $nom -u $nom -d /home/$nom/www # Ajoute l'utilisateur FTP
-                                pure-pw mkdb &>/dev/null  # Met à jour la base FTP
+                        if id "$nom" &>/dev/null; then
+                                pure-pw useradd $nom -u $nom -d /home/$nom/www
+                                pure-pw mkdb &>/dev/null
                                 echo -e "${BVERT}FTP activé pour $nom !!${NC}"
                         else
                                 echo -e "${BRED}L'utilisateur $nom n'existe pas !${NC}"
                         fi
                         ;;
                 2)
-                        # --- Désactiver FTP ---
                         echo ""
                         echo -e "${BVERT}============================${NC}"
                         echo -e "${BVERT}====== Désactiver FTP ======${NC}"
                         echo -e "${BVERT}============================${NC}"
                         echo ""
                         echo -e "${BYELLOW}Comptes FTP existants :${NC}"
-                        pure-pw list 2>/dev/null  # Affiche les comptes FTP
+                        pure-pw list 2>/dev/null
                         echo ""
                         echo -e "${GRAS}Quel utilisateur veux-tu désactiver ?${NC}"
                         read nom
-                        pure-pw userdel $nom &>/dev/null  # Supprime l'utilisateur FTP
-                        pure-pw mkdb &>/dev/null           # Met à jour la base FTP
+                        pure-pw userdel $nom &>/dev/null
+                        pure-pw mkdb &>/dev/null
                         echo -e "${BVERT}FTP désactivé pour $nom !!${NC}"
                         ;;
                 3)
-                        # --- Afficher les comptes FTP ---
                         echo ""
                         echo -e "${BVERT}============================${NC}"
                         echo -e "${BVERT}====== Comptes FTP =========${NC}"
                         echo -e "${BVERT}============================${NC}"
                         echo ""
-                        pure-pw list 2>/dev/null  # Liste tous les comptes FTP
+                        pure-pw list 2>/dev/null
                         ;;
                 0)
-                        return # Retourne au menu principal
+                        return
                         ;;
                 *)
                         echo -e "${BRED}Choix invalide !${NC}"
@@ -76,7 +73,7 @@ manage_ftp() {
         echo -e "${GRAS}Voulez-vous faire autre chose ? (y/n)${NC}"
         read rep
         if [ "$rep" == "y" ]; then
-                manage_ftp  # Rappelle la fonction
+                manage_ftp
         else
                 echo "Retour au menu dans 3.."; sleep 1
                 echo "Retour au menu dans 2.."; sleep 1

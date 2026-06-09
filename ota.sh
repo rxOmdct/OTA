@@ -1,22 +1,20 @@
 #!/bin/bash
-VERT='\033[0;32m'    # Vert
-BVERT='\033[1;32m'   # Vert gras (vert vif)
-BRED='\033[1;31m'    # Rouge gras
-BC='\e[1;34m'        # Bleu ciel
-SOULIGNE='\033[4m'   # Souligne
-GRAS='\033[1m'       # Gras
-NC='\033[0m'         # No Color
+VERT='\033[0;32m'
+BVERT='\033[1;32m'
+BRED='\033[1;31m'
+BC='\e[1;34m'
+SOULIGNE='\033[4m'
+GRAS='\033[1m'
+NC='\033[0m'
 
-while true; do  # while true = tourne indéfiniment jusqu'à ce qu'on fasse exit
-    clear # Permet d'empêcher que le menu se réaffiche en dessous à chaque fois
+while true; do
+    clear
 
-    # Titre en vert
     echo -e "${BRED} ╔══════════════════════════════════════╗${NC}"
     echo -e "${BRED} ║     Projet OTA - Hébergement WEB     ║${NC}"
     echo -e "${BRED} ╚══════════════════════════════════════╝${NC}"
     echo ""
 
-    # Options en gras blanc
     echo -e "${GARS} ${BRED} AVANT TOUTE INSTALLATION VEUILLEZ FAIRE 9 !!! ${NC} "
     echo ""
     echo -e "${GRAS}  1 - Créer un hébergement${NC}"
@@ -50,4 +48,4 @@ while true; do  # while true = tourne indéfiniment jusqu'à ce qu'on fasse exit
             exit 0 ;;
         *) echo -e "${BRED}  SAPRISTI CECI EST UNE FAUTE !${NC}"; sleep 1 ;;
     esac
-done # done = ferme la boucle while
+done

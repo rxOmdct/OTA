@@ -1,10 +1,10 @@
 #!/bin/bash
-BVERT='\033[1;32m'   # Vert gras
-BRED='\033[1;31m'    # Rouge gras
-BYELLOW='\033[1;33m' # Jaune gras
-BCYAN='\033[1;36m'   # Cyan gras
-GRAS='\033[1m'       # Gras
-NC='\033[0m'         # No Color
+BVERT='\033[1;32m'
+BRED='\033[1;31m'
+BYELLOW='\033[1;33m'
+BCYAN='\033[1;36m'
+GRAS='\033[1m'
+NC='\033[0m'
 
 server_info() {
         echo -e "${BVERT}============================${NC}"
@@ -12,12 +12,10 @@ server_info() {
         echo -e "${BVERT}============================${NC}"
         echo ""
 
-        # --- Espace disque ---
         echo -e "${BYELLOW}___ Espace disque ___${NC}"
-        df -h / # Affiche l'espace disque total et utilisé
+        df -h /
         echo ""
 
-        # --- Nombre d'utilisateurs ---
         echo -e "${BYELLOW}___ Utilisateurs hébergés ___${NC}"
         count=0
         for dir in /home/*/; do
@@ -30,7 +28,6 @@ server_info() {
         echo -e "${GRAS}Total : $count utilisateur(s)${NC}"
         echo ""
 
-        # --- Espace utilisé par utilisateur ---
         echo -e "${BYELLOW}___ Espace utilisé par utilisateur ___${NC}"
         for dir in /home/*/; do
                 user=$(basename "$dir")
@@ -41,12 +38,10 @@ server_info() {
         done
         echo ""
 
-        # --- Sites hébergés ---
         echo -e "${BYELLOW}___ Sites hébergés ___${NC}"
-        ls /etc/apache2/sites-enabled/ 2>/dev/null  # Liste les VirtualHosts actifs
+        ls /etc/apache2/sites-enabled/ 2>/dev/null
         echo ""
 
-        # --- Statut des services ---
         echo -e "${BYELLOW}___ Statut des services ___${NC}"
         for service in apache2 pure-ftpd mariadb ssh; do
                 if systemctl is-active --quiet "$service" 2>/dev/null; then
@@ -57,9 +52,8 @@ server_info() {
         done
         echo ""
 
-        # --- IP du serveur ---
         echo -e "${BYELLOW}___ Adresse IP ___${NC}"
-        hostname -I  # Affiche les adresses IP du serveur
+        hostname -I
         echo ""
 
         echo "Retour au menu dans 3.."; sleep 1

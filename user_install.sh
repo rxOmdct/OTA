@@ -1,10 +1,10 @@
 #!/bin/bash
-BVERT='\033[1;32m'   # Vert gras
-BRED='\033[1;31m'    # Rouge gras
-BYELLOW='\033[1;33m' # Jaune gras
-BCYAN='\033[1;36m'   # Cyan gras
-GRAS='\033[1m'       # Gras
-NC='\033[0m'         # No Color
+BVERT='\033[1;32m'
+BRED='\033[1;31m'
+BYELLOW='\033[1;33m'
+BCYAN='\033[1;36m'
+GRAS='\033[1m'
+NC='\033[0m'
 
 create_user() {
 	echo -e "${BVERT}============================${NC}"
@@ -68,12 +68,12 @@ create_user() {
 	if [ "$rep" == "y" ]; then
 		echo -e "${GRAS}Configuration du shh en cours...${NC}"
 		sleep 1;
-		usermod -s /bin/bash $nom #Avtiver
+		usermod -s /bin/bash $nom
 		echo -e "${GRAS}SSH configurer ! ${NC}"
 	else
 		echo -e "${GRAS}Annulation en cours... ${NC}"
 		sleep 1;
-		usermod -s /usr/sbin/nologin $nom #Désactiver
+		usermod -s /usr/sbin/nologin $nom
 	fi
 	echo ""
 	echo -e "${BVERT}============================${NC}"
